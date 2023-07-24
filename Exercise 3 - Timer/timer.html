@@ -2,29 +2,25 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="../src/output.css">
+    <title>Countdown Timer</title>
+    <link rel="stylesheet" href="timer.css">
 </head>
 
 <body>
-
-    <h2>Exercise 3 - Timer</h2>
-    
-
-    <div id="myTimer">
-        <h2>Countdown Timer</h2>
-        <button id="decreaseBtn"> - </button>
-        <span id="timer">00:00:00</span>
-        <button id="addBtn"> + </button>
+    <h2>Exercise-1 timer countdown</h2>
+    <h2>Countdown Timer</h2>
+    <div id="timerContainer">
+        <button id="decreaseBtn" class="addnsub" onclick="adjustTime(-1)">-</button>
+        <span id="time">00:00:00</span>
+        <button id="incrementBtn" class="addnsub" onclick="adjustTime(1)">+</button>
     </div>
     <br>
-    <div>
-
-        <button id="reset">Reset</button>
-        <button id="startBtn">START</button>
+    <div id="controls">
+        <button id="reset" onclick="resetTime()">Reset</button>
+        <button id="startnStopBtn" onclick="toggleTime()">Start</button>
     </div>
 
-    <script src="./timer.js"></script>
-
+    <script src="timer.js"></script>
 </body>
 
 </html>

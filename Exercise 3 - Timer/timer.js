@@ -1,37 +1,33 @@
- let startBtn = document.getElementById('startBtn');
- let decreaseBtn = document.getElementById('decreaseBtn');
- let  addBtn = document.getElementById('addBtn');
- let reset=  document.getElementById('reset');
-let interval;
 let count = 0;
-let runningCount = false;
+let timeInterval;
+let isCountRunning = false;
 
-function timeDisplay (){
-    let hours = Math.floor(count / 3600);
-let min = Math.floor((count % 3600) /60);
-let  secs = count % 60 ;
-    let finalTime = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-document.getElementById('timer').textContent = finalTime;
+function timerDisplay() {
+    const hours = Math.floor(count / 3600);
+    const minutes = Math.floor((count % 3600) / 60);
+    const seconds = count % 60;
+    const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    document.getElementById('time').textContent = formattedTime;
 }
 
-function countDown(){
-    if(runningCount && count> 0){
-        runningCount = true;
-        startBtn.textContent = 'STOP';
-        decreaseBtn.disabled = true;
-        addBtn.disabled = true;
-        reset.disabled = true;
+function countdown() {
+    if (!isCountRunning && count > 0) {
+        isCountRunning = true;
+        document.getElementById('startnStopBtn').textContent = 'STOP';
+        document.getElementById('decreaseBtn').disabled = true;
+        document.getElementById('incrementBtn').disabled = true;
+        document.getElementById('reset').disabled = true;
 
         timeInterval = setInterval(() => {
             count--;
-            timeDisplay();
+            timerDisplay();
 
-            if (count === 0){
-                stopCount();
+            if (count === 0) {
+                countdown();
             }
-        },1000);
+        }, 1000);
     } else {
-        stopCount();
+        countdown();
     }
 }
 
@@ -46,19 +42,27 @@ function stopCount(){
 }
 
 
-function resetTimer(){
+function resetTime() {
     stopCount();
     count = 0;
-    timeDisplay();
+    timerDisplay();
 }
 
-function timeAdjust (secs){
-    if(!runningCount){
-        count +=secs;
-        if (count < 0){
+function adjustTime(seconds) {
+    if (!isCountRunning) {
+        count += seconds;
+        if (count < 0) {
             count = 0;
         }
-        timeDisplay();
+        timerDisplay();
     }
 }
 
+
+function toggleTime() {
+    if (isCountRunning) {
+        stopCount();
+    } else {
+        countdown();
+    }
+}

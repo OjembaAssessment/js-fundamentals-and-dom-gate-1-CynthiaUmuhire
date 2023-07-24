@@ -1,4 +1,27 @@
-#myTimer {
-    color: red;
-    font-size: 64px;
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
 }
+
+#timerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#time {
+  font-size: 24px;
+  padding: 10px;
+  height: 40px;
+  width: 224px ;
+  background-color: aquamarine ;
+
+}
+
+button {
+  font-size: 18px;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+}
+
