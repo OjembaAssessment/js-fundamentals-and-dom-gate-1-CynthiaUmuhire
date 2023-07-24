@@ -1,5 +1,5 @@
 let count = 0;
-let timeInterval;
+let timerInterval;
 let isCountRunning = false;
 
 function timerDisplay() {
@@ -18,7 +18,7 @@ function countdown() {
         document.getElementById('incrementBtn').disabled = true;
         document.getElementById('reset').disabled = true;
 
-        timeInterval = setInterval(() => {
+        timerInterval = setInterval(() => {
             count--;
             timerDisplay();
 
@@ -32,7 +32,7 @@ function countdown() {
 }
 
 function stopCount(){
-    clearInterval(timeInterval);
+    clearInterval(timerInterval);
     runningCount = false;
 
     startBtn.textContent = 'START';
